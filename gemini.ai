@@ -1,0 +1,81 @@
+// ** Logika untuk AI Chat Modal **
+        const aiChatBtn = document.getElementById('ai-chat-btn');
+        const aiChatModal = document.getElementById('ai-chat-modal');
+        const closeAiModalBtn = document.getElementById('close-ai-modal-btn');
+
+        aiChatBtn.addEventListener('click', e => {
+            e.preventDefault();
+            aiChatModal.classList.remove('hidden');
+        });
+
+        const closeModal = () => aiChatModal.classList.add('hidden');
+        closeAiModalBtn.addEventListener('click', closeModal);
+        aiChatModal.addEventListener('click', e => {
+            if (e.target === aiChatModal) closeModal();
+        });
+
+        // ** Logika Interaksi dengan Gemini AI **
+        const aiChatForm = document.getElementById('ai-chat-form');
+        const aiChatInput = document.getElementById('ai-chat-input');
+        const aiChatBody = document.getElementById('ai-chat-body');
+
+        const appendMessage = (message, sender) => {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+            messageDiv.innerHTML = `<div class="${sender === 'user' ? 'bg-gray-700' : 'bg-indigo-600'} text-white p-3 rounded-lg max-w-sm"><p>${message}</p></div>`;
+            aiChatBody.appendChild(messageDiv);
+            aiChatBody.scrollTop = aiChatBody.scrollHeight;
+        };
+
+        const showTypingIndicator = () => {
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typing-indicator';
+            typingDiv.className = 'flex justify-start';
+            typingDiv.innerHTML = `<div class="bg-gray-700 p-4 rounded-lg"><div class="dot-flashing"></div></div>`;
+            aiChatBody.appendChild(typingDiv);
+            aiChatBody.scrollTop = aiChatBody.scrollHeight;
+        };
+
+        const removeTypingIndicator = () => {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
+        };
+
+        const getAiResponse = async (prompt) => {
+            const apiKey = ""; // Disediakan oleh environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+            const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const result = await response.json();
+
+                if (result.candidates && result.candidates[0]?.content?.parts[0]?.text) {
+                    return result.candidates[0].content.parts[0].text;
+                }
+                return "Maaf, terjadi kesalahan saat mencoba menghubungi AI.";
+
+            } catch (error) {
+                console.error("Gemini API call failed:", error);
+                return "Gagal terhubung dengan AI. Silakan coba lagi nanti.";
+            }
+        };
+
+        aiChatForm.addEventListener('submit', async e => {
+            e.preventDefault();
+            const userMessage = aiChatInput.value.trim();
+            if (!userMessage) return;
+
+            appendMessage(userMessage, 'user');
+            aiChatInput.value = '';
+            showTypingIndicator();
+
+            const aiMessage = await getAiResponse(userMessage);
+            removeTypingIndicator();
+            appendMessage(aiMessage, 'ai');
+        });
