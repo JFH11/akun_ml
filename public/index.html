@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RanziroStore - Top Up Game Cepat, Aman, dan Terpercaya</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/index.css" />
+
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="text-gray-200">
+
+    <!-- Header / Navbar -->
+    <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/semua-akun" class="text-2xl font-extrabold text-white">
+                    Ranziro<span class="text-indigo-500">Store</span>
+                </a>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="/semua-akun#produk" class="hover:text-indigo-400 transition-colors duration-300">Produk</a>
+                    <a href="/semua-akun#cara-topup" class="hover:text-indigo-400 transition-colors duration-300">Cara
+                        Top Up</a>
+                    <a href="#" class="hover:text-indigo-400 transition-colors duration-300">Lacak Pesanan</a>
+                </div>
+                <!-- Desktop Header -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <div class="relative">
+                        <input id="search-akun" type="text" placeholder="Cari game..."
+                            class="bg-gray-800 border border-gray-700 rounded-full py-2 px-4 w-48 focus:w-56 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <i class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                    </div>
+                    <a id="btn-login" href="/login"
+                        class="text-gray-300 hover:text-indigo-400 font-semibold py-2 px-5 transition-colors duration-300">
+                        Masuk
+                    </a>
+                    <a id="btn-signup" href="/signup"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-5 rounded-full transition-colors duration-300">
+                        Daftar
+                    </a>
+                </div>
+                <!-- Mobile Header -->
+                <div class="lg:hidden flex flex-grow items-center gap-4 ml-4">
+                    <div class="relative flex-grow">
+                        <input id="search-akun" type="text" placeholder="Cari game..."
+                            class="w-full bg-gray-800 border border-gray-700 rounded-full py-2 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
+                        <i class="fas fa-search absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                    </div>
+
+                    <button id="menu-btn" class="text-white focus:outline-none flex-shrink-0">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-gray-800 rounded-md mx-4 mt-2 shadow-lg">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="/semua-akun#produk" class="block hover:text-indigo-400 transition-colors duration-300 py-2">
+                    Produk
+                </a>
+                <a href="/semua-akun#cara-topup"
+                    class="block hover:text-indigo-400 transition-colors duration-300 py-2">
+                    Cara Top Up
+                </a>
+                <a href="#" class="block hover:text-indigo-400 transition-colors duration-300 py-2">
+                    Lacak Pesanan
+                </a>
+                <div class="border-t border-gray-700 pt-4 mt-4 space-y-3">
+                    <a href="/login"
+                        class="block text-center bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-5 rounded-full transition-colors duration-300">
+                        Masuk
+                    </a>
+                    <a href="/signup"
+                        class="block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-5 rounded-full transition-colors duration-300">
+                        Daftar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 lg:px-8 py-10">
+
+        <!-- Hero Section -->
+        <section class="slider-viewport w-full ">
+            <div class="slider-track">
+
+                <!-- Slide 1: Jual Akun -->
+                <div class="slide">
+                    <div
+                        class="bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 rounded-2xl aspect-[2.1/1] md:aspect-[2.5/1] lg:aspect-[3/1] flex flex-row items-center p-4 sm:p-6 lg:p-12">
+                        <div class="w-7/12 text-left">
+                            <h1
+                                class="text-xl sm:text-3xl lg:text-5xl font-extrabold text-white leading-tight mb-2 lg:mb-4">
+                                Jual Akun Mobile Legends</h1>
+                            <p class="text-xs sm:text-sm lg:text-lg text-gray-300 mb-4 lg:mb-6">Akun aktif dengan skin
+                                lengkap, hero banyak, dan winrate tinggi. Siap mabar dan push rank!</p>
+                            <a href="#produk"
+                                class="inline-block bg-white text-indigo-600 font-bold py-2 px-4 sm:py-3 sm:px-8 rounded-full text-xs sm:text-base lg:text-lg hover:bg-gray-200 transition-transform transform hover:scale-105 duration-300">
+                                Lihat Daftar Akun
+                            </a>
+                        </div>
+                        <div class="w-5/12 flex justify-end items-center h-full">
+                            <img src="https://placehold.co/400x400/111827/FFFFFF?text=Jual+Akun" alt="Jual Akun ML"
+                                class="w-full max-w-[200px] sm:max-w-[250px] h-auto rounded-lg">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Akun Terjual -->
+                <div class="slide">
+                    <div
+                        class="bg-gradient-to-r from-green-900 via-emerald-800 to-lime-800 rounded-2xl aspect-[2.1/1] md:aspect-[2.5/1] lg:aspect-[3/1] flex flex-row items-center p-4 sm:p-6 lg:p-12">
+                        <div class="w-7/12 text-left">
+                            <h1
+                                class="text-xl sm:text-3xl lg:text-5xl font-extrabold text-white leading-tight mb-2 lg:mb-4">
+                                Cek Status Akun Terjual</h1>
+                            <p class="text-xs sm:text-sm lg:text-lg text-gray-300 mb-4 lg:mb-6">Sudah beli akun? Cek di
+                                sini apakah akunmu sudah dikirim atau status transaksi masih diproses.</p>
+                            <a href="#cek-akun"
+                                class="inline-block bg-white text-green-700 font-bold py-2 px-4 sm:py-3 sm:px-8 rounded-full text-xs sm:text-base lg:text-lg hover:bg-green-200 transition-transform transform hover:scale-105 duration-300">
+                                Cek Status
+                            </a>
+                        </div>
+                        <div class="w-5/12 flex justify-end items-center h-full">
+                            <img src="https://placehold.co/400x400/111827/FFFFFF?text=Akun+Terjual" alt="Akun Terjual"
+                                class="w-full max-w-[200px] sm:max-w-[250px] h-auto rounded-lg">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Info Akun Hack -->
+                <div class="slide">
+                    <div
+                        class="bg-gradient-to-r from-red-900 via-rose-900 to-fuchsia-900 rounded-2xl aspect-[2.1/1] md:aspect-[2.5/1] lg:aspect-[3/1] flex flex-row items-center p-4 sm:p-6 lg:p-12">
+                        <div class="w-7/12 text-left">
+                            <h1
+                                class="text-xl sm:text-3xl lg:text-5xl font-extrabold text-white leading-tight mb-2 lg:mb-4">
+                                Peringatan Akun Terkena Hack</h1>
+                            <p class="text-xs sm:text-sm lg:text-lg text-gray-300 mb-4 lg:mb-6">Beberapa akun terdeteksi
+                                login mencurigakan. Jika kamu pemilik akun, segera hubungi admin kami untuk verifikasi.
+                            </p>
+                            <a href="#hubungi"
+                                class="inline-block bg-white text-rose-600 font-bold py-2 px-4 sm:py-3 sm:px-8 rounded-full text-xs sm:text-base lg:text-lg hover:bg-rose-200 transition-transform transform hover:scale-105 duration-300">
+                                Hubungi Admin
+                            </a>
+                        </div>
+                        <div class="w-5/12 flex justify-end items-center h-full">
+                            <img src="https://placehold.co/400x400/111827/FFFFFF?text=Hacked+Info" alt="Akun Dihack"
+                                class="w-full max-w-[200px] sm:max-w-[250px] h-auto rounded-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="product" class="py-12 text-white">
+            <div class=" mx-auto px-4">
+                <!-- Tombol Filter -->
+                <div class="flex gap-4 mb-8 flex-wrap">
+                    <button
+                        class="filter-btn relative overflow-hidden bg-gray-800 px-4 py-2 rounded-full text-white transition-all duration-300"
+                        data-filter="available">
+                        Akun Tersedia
+                    </button>
+                    <button
+                        class="filter-btn relative overflow-hidden bg-gray-800 px-4 py-2 rounded-full text-white transition-all duration-300"
+                        data-filter="sold">
+                        Akun Terjual
+                    </button>
+                    <button
+                        class="filter-btn relative overflow-hidden bg-gray-800 px-4 py-2 rounded-full text-white transition-all duration-300"
+                        data-filter="hacked">
+                        Akun Terkena Hack
+                    </button>
+                </div>
+
+                <!-- Konten Akun -->
+                <div class="relative min-h-[200px]">
+                    <!-- Akun Tersedia -->
+                    <!-- Akun Tersedia -->
+                    <!-- Akun Tersedia -->
+                    <div class="fade-section block" data-content="available">
+                        <div id="grid-available"
+                            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-3">
+                            <!-- Data akan di-inject di sini -->
+                        </div>
+                        <div class="flex justify-center mt-4">
+                            <button data-status="available"
+                                class="show-more-btn px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full hidden">
+                                Tampilkan Lebih Banyak
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Akun Terjual -->
+                    <div class="fade-section hidden" data-content="sold">
+                        <div id="grid-sold"
+                            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-3">
+                            <!-- Data akan di-inject di sini -->
+                        </div>
+                        <div class="flex justify-center mt-4">
+                            <button data-status="sold"
+                                class="show-more-btn px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full hidden">
+                                Tampilkan Lebih Banyak
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Akun Terkena Hack -->
+                    <div class="fade-section hidden" data-content="hacked">
+                        <div id="grid-hacked"
+                            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-3">
+                            <!-- Data akan di-inject di sini -->
+                        </div>
+                        <div class="flex justify-center mt-4">
+                            <button data-status="hacked"
+                                class="show-more-btn px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full hidden">
+                                Tampilkan Lebih Banyak
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <div id="ai-modal-backdrop"
+        class="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-4 hidden opacity-0">
+        <div id="ai-modal-content" class="bg-gray-800 rounded-xl shadow-2xl p-6 w-full max-w-md transform scale-95">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="ai-modal-title" class="text-xl font-bold text-white">✨ Hasil dari AI</h3>
+                <button onclick="hideAiModal()" class="text-gray-400 hover:text-white">&times;</button>
+            </div>
+            <div id="ai-modal-body" class="text-gray-300 space-y-2">
+                <!-- Loader -->
+                <div id="ai-loader" class="text-center py-8 hidden">
+                    <div class="spinner w-12 h-12 rounded-full border-4 border-gray-600 mx-auto"></div>
+                    <p class="mt-4">AI sedang berfikir...</p>
+                </div>
+                <!-- Result -->
+                <div id="ai-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW DETAILED FOOTER -->
+    <footer class="bg-gray-900 border-t border-gray-800 pt-16 pb-8">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+
+                <!-- 1. About RanziroStore -->
+                <div class="md:col-span-2 lg:col-span-1">
+                    <h3 class="text-2xl font-extrabold text-white mb-4">
+                        Ranziro<span class="text-indigo-500">Store</span>
+                    </h3>
+                    <p class="text-gray-400 text-sm">
+                        Platform top up game termurah, tercepat, dan terpercaya di Indonesia. Menyediakan berbagai macam
+                        produk game populer dengan proses instan 24 jam untuk pengalaman gaming tanpa batas.
+                    </p>
+                </div>
+
+                <!-- 2. Peta Situs & Legalitas -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Peta Situs</h4>
+                    <ul class="space-y-3 mb-6">
+                        <li><a href="#produk" class="text-gray-400 hover:text-indigo-400 transition-colors">Produk</a>
+                        </li>
+                        <li><a href="#cara-topup" class="text-gray-400 hover:text-indigo-400 transition-colors">Cara Top
+                                Up</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors">Lacak Pesanan</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors">Masuk</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors">Daftar</a></li>
+                    </ul>
+
+                    <h4 class="text-lg font-semibold text-white mb-4">Legalitas</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors">Syarat &
+                                Ketentuan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors">Kebijakan
+                                Privasi</a></li>
+                    </ul>
+                </div>
+
+                <!-- 3. Sosial Media & Search -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" aria-label="YouTube"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition-all duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" aria-label="Instagram"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="TikTok"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-black hover:text-white transition-all duration-300">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+
+                    <h4 class="text-lg font-semibold text-white mb-4">Cari Produk</h4>
+                    <div class="relative">
+                        <input type="text" placeholder="Cari di sini..."
+                            class="w-full bg-gray-800 border border-gray-700 rounded-lg py-2 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-indigo-400">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4. Feedback Form -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Beri Masukan</h4>
+                    <form action="#" method="POST">
+                        <textarea name="feedback" rows="4" placeholder="Tuliskan masukan Anda untuk kami..."
+                            class="w-full bg-gray-800 border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-3 text-sm"></textarea>
+                        <button type="submit"
+                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 rounded-lg transition-colors duration-300">
+                            Kirim Masukan
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Copyright line -->
+            <div class="mt-12 border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; <span id="year"></span> RanziroStore. Semua Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Customer Service Button Group (Kiri Bawah) -->
+    <div class="group fixed bottom-6 left-6 z-40">
+        <!-- Dropdown Menu (muncul ke kanan) -->
+        <div class="absolute left-0 bottom-full mb-4 flex flex-col items-start gap-3 w-max pointer-events-none">
+            <a href="#" id="ai-chat-btn"
+                class="cs-dropdown-item pointer-events-auto flex items-center bg-indigo-500 text-white py-2 px-4 rounded-full shadow-lg hover:bg-indigo-600"
+                style="transition-delay: 150ms;">
+                <i class="fas fa-robot mr-3"></i>
+                <span>Tanya AI</span>
+            </a>
+            <a href="https://wa.me/6281234567890" target="_blank"
+                class="cs-dropdown-item pointer-events-auto flex items-center bg-green-500 text-white py-2 px-4 rounded-full shadow-lg hover:bg-green-600"
+                style="transition-delay: 100ms;">
+                <i class="fab fa-whatsapp mr-3"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="mailto:support@ranzirostore.com"
+                class="cs-dropdown-item pointer-events-auto flex items-center bg-gray-600 text-white py-2 px-4 rounded-full shadow-lg hover:bg-gray-500"
+                style="transition-delay: 50ms;">
+                <i class="fas fa-envelope mr-3"></i>
+                <span>Email</span>
+            </a>
+        </div>
+        <!-- Tombol CS Utama -->
+        <button
+            class="w-16 h-16 bg-indigo-600 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-indigo-700 transition-transform transform group-hover:rotate-12">
+            <i class="fas fa-headset text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Tombol Kembali ke Atas -->
+    <button id="scrollToTopBtn"
+        class="hidden fixed bottom-6 right-6 z-50 w-12 h-12 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-lg transition-opacity duration-300 flex items-center justify-center">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+    <!-- AI Chat Modal -->
+    <div id="ai-chat-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-4">
+        <div class="bg-gray-800 rounded-2xl shadow-2xl w-full max-w-lg flex flex-col h-[70vh]">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-4 border-b border-gray-700">
+                <h3 class="text-xl font-bold text-white flex items-center"><i
+                        class="fas fa-robot text-indigo-400 mr-3"></i>AI Assistant</h3>
+                <button id="close-ai-modal-btn" class="text-gray-400 hover:text-white">&times;</button>
+            </div>
+            <!-- Chat Body -->
+            <div id="ai-chat-body" class="flex-grow p-4 space-y-4 overflow-y-auto">
+                <div class="flex justify-start">
+                    <div class="bg-indigo-600 text-white p-3 rounded-lg max-w-sm">
+                        <p>Halo! Saya adalah asisten AI RanziroStore. Ada yang bisa saya bantu terkait top up game?</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Input Form -->
+            <div class="p-4 border-t border-gray-700">
+                <form id="ai-chat-form" class="flex items-center gap-2">
+                    <input type="text" id="ai-chat-input" placeholder="Ketik pertanyaanmu di sini..."
+                        class="w-full bg-gray-700 border border-gray-600 rounded-full py-3 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <button type="submit"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+      <!-- Popup -->
+  <div id="popup" class="fixed top-6 right-6 hidden bg-green-600 px-4 py-3 rounded-lg shadow-lg text-white text-sm font-medium animate__animated z-50"></div>
+
+    <script>
+        // Tampilkan popup jika login sukses
+    document.addEventListener("DOMContentLoaded", () => {
+      const idxPopup = document.getElementById("popup");
+      const cookies = document.cookie.split(';').map(c => c.trim());
+      const successLogin = cookies.find(c => c.startsWith('loginSuccess='));
+      if (successLogin && successLogin.includes('true')) {
+        idxPopup.textContent = "✅ Berhasil login!";
+        idxPopup.classList.remove("hidden");
+        idxPopup.classList.add('animate__fadeInDown', 'animate__bounceIn', 'block');
+
+        setTimeout(() => {
+          idxPopup.classList.add('animate__fadeInDown', 'animate__bounceIn', 'animate__fadeOut');
+          setTimeout(() => idxPopup.remove(), 2000);
+        }, 3000);
+
+        // Hapus cookie
+        document.cookie = "loginSuccess=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      }
+    });
+    </script>
+
+    <script src="js/fetch_akun.js"></script>
+    <script src="js/logic.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

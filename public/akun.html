@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detail Akun</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/index.css">
+  <style>
+      #image-slider {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  #image-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  #image-slider img {
+    scroll-snap-align: center;
+  }
+  </style>
+</head>
+<body>
+
+  <div class="max-w-xl mx-auto p-4 bg-white shadow-lg rounded-xl">
+
+<!-- SLIDER -->
+<div class="overflow-hidden rounded-lg mb-4">
+  <div id="image-slider" class="flex overflow-x-scroll snap-x snap-mandatory">
+    <!-- Gambar dimasukkan JS -->
+  </div>
+</div>
+
+<!-- INFO AKUN -->
+    <div class="mb-4">
+      <h2 id="nama-akun" class="text-xl font-bold text-gray-800">Nama Akun</h2>
+      <p id="id-akun" class="text-gray-600">ID Akun: </p>
+      <p id="harga-akun" class="text-green-600 font-semibold">Harga: Rp. </p>
+    </div>
+
+    <hr class="my-4 border-gray-300" />
+
+    <!-- DETAIL AKUN -->
+    <div class="space-y-1 text-gray-700">
+      <h3 class="text-lg font-semibold mb-2">Detail Akun</h3>
+      <p id="deskripsi-detail"></p>
+      <p id="high-rank-detail"></p>
+      <p id="skin-detail"></p>
+      <p id="emblem-detail"></p>
+      <p id="status-detail"></p>
+      <p id="log-detail"></p>
+      <p id="minus-detail"></p>
+    </div>
+
+    <!-- TOMBOL WHATSAPP -->
+    <div class="mt-6 text-center">
+      <button id="btn-whatsapp"
+        class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg transition duration-300">
+        Beli Sekarang
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    const namaAkun = new URLSearchParams(window.location.search).get("nama_akun") || "akunml1";
+
+    async function loadDataAkun() {
+      try {
+        // Ambil detail akun
+        const resAkun = await fetch(`/api/akun-detail/${namaAkun}`);
+        const akun = await resAkun.json();
+
+        document.getElementById("nama-akun").textContent = akun.nama_akun;
+        document.getElementById("id-akun").textContent = "ID Akun: " + akun.id_akun;
+        document.getElementById("harga-akun").textContent = "Harga: Rp. " + akun.harga.toLocaleString();
+
+        document.getElementById("deskripsi-detail").textContent = "Deskripsi: " + akun.deskripsi;
+        document.getElementById("high-rank-detail").textContent = "Rank: " + akun.rank;
+        document.getElementById("skin-detail").textContent = "Jumlah Skin: " + akun.skin;
+        document.getElementById("emblem-detail").textContent = "Emblem: " + akun.emblem;
+        document.getElementById("status-detail").textContent = "Status: " + akun.status;
+        document.getElementById("log-detail").textContent = "Log: " + akun.log;
+        document.getElementById("minus-detail").textContent = "Minus: " + akun.minus;
+
+        // WhatsApp
+        document.getElementById("btn-whatsapp").addEventListener("click", () => {
+          const message = `Mau beli akun ini:\nNama: ${akun.nama_akun}\nID: ${akun.id_akun}\nHarga: Rp. ${akun.harga.toLocaleString()}`;
+          const waUrl = `https://wa.me/62xxxxxxxxxx?text=${encodeURIComponent(message)}`;
+          window.open(waUrl, "_blank");
+        });
+
+      } catch (err) {
+        console.error("Gagal memuat detail akun:", err);
+      }
+    }
+
+    async function loadGambarSlider() {
+      try {
+        const res = await fetch(`/api/gambar-akun/${namaAkun}`);
+        const data = await res.json();
+        
+        const slider = document.getElementById("image-slider");
+        slider.innerHTML = "";
+
+        data.forEach(item => {
+          const img = document.createElement("img");
+          img.src = `/img/${namaAkun}/${item.nama_file}`;
+          img.alt = "Gambar Akun";
+          img.className = "w-full max-w-[300px] h-[180px] object-cover rounded-lg snap-center flex-shrink-0";
+          slider.appendChild(img);
+        });
+      } catch (err) {
+        console.error("Gagal memuat gambar slider:", err);
+      }
+    }
+
+    // Muat data
+    loadDataAkun();
+    loadGambarSlider();
+  </script>
+
+</body>
+</html>

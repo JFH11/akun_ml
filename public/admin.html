@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - RanziroStore</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script> 
+</head>
+<body class="bg-gray-900 text-white font-sans">
+  <header class="bg-gray-800 sticky top-0 z-50 shadow">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-extrabold text-white">
+                    Admin<span class="text-indigo-500">Dashboard</span>
+    </h1>
+      <div class="relative">
+        <button id="dropdownBtn" class="bg-gray-700 px-4 py-2 rounded">Urutkan</button>
+        <div id="dropdownMenu" class="absolute right-0 mt-2 bg-gray-800 border border-gray-600 rounded hidden z-40">
+          <button data-sort="a-z" class="block px-4 py-2 hover:bg-gray-700 w-full text-left">A-Z</button>
+          <button data-sort="terbaru" class="block px-4 py-2 hover:bg-gray-700 w-full text-left">Terbaru</button>
+          <button data-sort="terlama" class="block px-4 py-2 hover:bg-gray-700 w-full text-left">Terlama</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="flex">
+<!-- SIDEBAR -->
+<aside class="w-48 bg-gray-800 h-screen sticky top-0 text-white p-4 space-y-4">
+  <!-- Tombol Data Akun -->
+  <button
+    onclick=""
+    id="show-akun"
+    class="flex items-center gap-2 w-full bg-transparent border border-indigo-500 px-4 py-2 rounded-lg hover:bg-gradient-to-r hover:from-indigo-700 hover:to-indigo-900 hover:shadow-indigo-500/50 hover:shadow-md hover:scale-105 transform transition-all duration-300 ease-in-out"
+  >
+    <i data-lucide="layout-grid"></i>
+    <span>Data Akun</span>
+  </button>
+
+  <!-- Tombol Data User -->
+  <button
+    onclick=""
+    id="show-user"
+    class="flex items-center gap-2 w-full bg-transparent border border-indigo-500 px-4 py-2 rounded-lg hover:bg-gradient-to-r hover:from-indigo-700 hover:to-indigo-900 hover:shadow-indigo-500/50 hover:shadow-md hover:scale-105 transform transition-all duration-300 ease-in-out"
+  >
+    <i data-lucide="users"></i>
+    <span>Data User</span>
+  </button>
+
+  <!-- ✅ Tombol Detail Akun (Baru) -->
+  <button
+    onclick=""
+    id="show-akun-detail"
+    class="flex items-center gap-2 w-full bg-transparent border border-indigo-500 px-4 py-2 rounded-lg hover:bg-gradient-to-r hover:from-indigo-700 hover:to-indigo-900 hover:shadow-indigo-500/50 hover:shadow-md hover:scale-105 transform transition-all duration-300 ease-in-out"
+  >
+    <i data-lucide="file-text"></i>
+    <span>Detail Akun</span>
+  </button>
+</aside>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content" class="flex-1 px-6 py-10 animate__animated animate__fadeIn">
+    <div id="akun-section">
+  <!-- ...semua isi main lama kamu disini -->
+<section class="mb-10">
+  <h2 class="text-2xl font-bold mb-6 text-white">✨ Tambah Akun ML</h2>
+  <form id="form-akun" class="space-y-5 bg-gray-900 p-6 rounded-xl shadow-lg max-w-xl border border-gray-700" enctype="multipart/form-data">
+    
+    <!-- Nama Akun -->
+    <div>
+      <label for="nama_akun" class="block text-sm font-medium text-gray-300 mb-1">Nama Akun</label>
+      <input id="nama_akun" name="nama_akun" type="text" placeholder="Contoh: LegendPro99"
+        class="w-full bg-gray-800 text-white p-3 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200" required>
+    </div>
+
+    <!-- ID Akun -->
+    <div>
+      <label for="id_akun" class="block text-sm font-medium text-gray-300 mb-1">ID Akun</label>
+      <input id="id_akun" name="id_akun" type="text" placeholder="Contoh: 12345678"
+        class="w-full bg-gray-800 text-white p-3 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200" required>
+    </div>
+
+    <!-- Gambar Upload -->
+    <div>
+      <label for="gambar" class="block text-sm font-medium text-gray-300 mb-1">Upload Gambar Akun</label>
+      <input id="gambar" name="gambar" type="file" accept="image/*"
+        class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4
+               file:rounded-lg file:border-0
+               file:text-sm file:font-semibold
+               file:bg-indigo-600 file:text-white
+               hover:file:bg-indigo-700 transition duration-200" required>
+    </div>
+
+    <!-- Tombol Submit -->
+    <div class="pt-2">
+      <button type="submit"
+        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition duration-200">
+        💾 Simpan Akun
+      </button>
+    </div>
+  </form>
+</section>
+
+    <section>
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-semibold">Data Akun index.html</h2>
+        <div class="space-x-2">
+          <button id="update-semua" class="bg-green-600 px-3 py-1 rounded hover:bg-green-700">Update Semua</button>
+          <button id="hapus-semua" class="bg-red-600 px-3 py-1 rounded hover:bg-red-700">Hapus Semua</button>
+          <button id="lihat-tong-sampah" class="bg-yellow-600 px-3 py-1 rounded hover:bg-yellow-700">Tong Sampah</button>
+          <button id="auto-delete-nonaktif" class="bg-pink-600 px-3 py-1 rounded hover:bg-pink-700">Auto Hapus Non-Aktif</button>
+        </div>
+      </div>
+      <div class="overflow-x-auto rounded-lg">
+        <table class="min-w-full border border-gray-700">
+          <thead class="bg-indigo-700 uppercase">
+            <tr>
+              <th class="px-4 py-2">Gambar</th>
+              <th class="px-4 py-2">Nama Akun</th>
+              <th class="px-4 py-2">ID Akun</th>
+              <th class="px-4 py-2">Status</th>
+              <th class="px-4 py-2">Created</th>
+              <th class="px-4 py-2">Updated</th>
+              <th class="px-4 py-2">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="akun-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="tong-sampah-section" class="mt-10 hidden">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-semibold">Tong Sampah index.html</h2>
+        <button id="hapus-permanen" class="bg-red-700 px-3 py-1 rounded hover:bg-red-800">Hapus Permanen</button>
+      </div>
+      <div class="overflow-x-auto rounded-lg">
+        <table class="min-w-full border border-gray-700">
+          <thead class="bg-indigo-700 uppercase">
+            <tr>
+              <th class="px-4 py-2">Nama Akun</th>
+              <th class="px-4 py-2">ID Akun</th>
+              <th class="px-4 py-2">Status</th>
+              <th class="px-4 py-2">Pulihkan</th>
+            </tr>
+          </thead>
+          <tbody id="tong-sampah-body"></tbody>
+        </table>
+      </div>
+    </section>
+</div>
+
+<!-- Tombol Hapus User Terpilih -->
+<div id="user-section" class="hidden fade-section space-y-6">
+
+  <!-- Header dan Tombol -->
+  <div class="flex items-center justify-between">
+    <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+      <svg class="w-7 h-7 text-indigo-400" fill="none" stroke="currentColor" stroke-width="2"
+        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M17 20h5v-2a4 4 0 00-4-4h-1M9 20H4v-2a4 4 0 014-4h1m3-4a4 4 0 100-8 4 4 0 000 8zm6 4a4 4 0 00-3-3.87" />
+      </svg>
+      Data Pengguna
+    </h2>
+    <button id="hapus-multi-user"
+      class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-4 py-2 rounded-lg shadow transition text-sm font-semibold">
+      🗑️ Hapus User Terpilih
+    </button>
+  </div>
+
+  <!-- Tabel Pengguna -->
+  <div class="overflow-x-auto rounded-2xl border border-gray-700 bg-gray-900 shadow-2xl">
+    <table class="min-w-full text-sm text-left text-white">
+      <thead class="bg-indigo-700 uppercase">
+        <tr>
+          <th class="px-5 py-3 w-10">
+            <input type="checkbox" id="check-all-user" class="form-checkbox text-indigo-500 w-4 h-4" />
+          </th>
+          <th class="px-5 py-3">Username</th>
+          <th class="px-5 py-3">Email</th>
+          <th class="px-5 py-3">Role</th>
+          <th class="px-4 py-3">Tanggal Daftar</th>
+          <th class="px-5 py-3 text-center">Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="user-tbody" class="divide-y divide-gray-800">
+        <!-- JS akan isi data user di sini -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION: DETAIL AKUN -->
+<div id="akun-detail-section" class="hidden p-6">
+  <h2 class="text-2xl font-semibold text-white mb-4">Data Detail Akun ML</h2>
+
+  <!-- FORM INPUT AKUN -->
+<div class="bg-gray-800 text-white p-6 rounded-lg shadow-md mb-10">
+  <h2 class="text-xl font-semibold mb-4">Tambah Akun Baru</h2>
+<form id="form-akun" enctype="multipart/form-data" method="POST" action="/api/akun-detail">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input type="text" name="nama_akun" placeholder="Nama Akun" required class="p-2 rounded bg-gray-700">
+      <input type="text" name="id_akun" placeholder="ID Akun" required class="p-2 rounded bg-gray-700">
+      <input type="number" name="harga" placeholder="Harga" required class="p-2 rounded bg-gray-700">
+      <input type="text" name="rank" placeholder="Rank" class="p-2 rounded bg-gray-700">
+      <input type="number" name="skin" placeholder="Jumlah Skin" class="p-2 rounded bg-gray-700">
+      <input type="text" name="emblem" placeholder="Emblem" class="p-2 rounded bg-gray-700">
+      <input type="text" name="status" placeholder="Status (pribadi/beli)" class="p-2 rounded bg-gray-700">
+      <input type="text" name="log" placeholder="Login (Moonton/Gmail/Facebook)" class="p-2 rounded bg-gray-700">
+    </div>
+
+    <textarea name="deskripsi" placeholder="Deskripsi" rows="3" required class="w-full mt-4 p-2 rounded bg-gray-700"></textarea>
+    <input type="text" name="minus" placeholder="Minus (jika ada)" class="w-full mt-2 p-2 rounded bg-gray-700">
+
+    <!-- Upload gambar -->
+    <div class="mt-6">
+      <label class="block mb-2">Upload Gambar Akun (maks 10)</label>
+      <div id="drop-area" class="border-2 border-dashed border-gray-500 p-6 rounded bg-gray-700 text-center text-white">
+        <p class="mb-2">Tarik & lepas gambar di sini atau klik untuk memilih</p>
+        <input type="file" id="gambar-akun" name="gambar_akun" accept="image/*" multiple class="hidden" />
+        <div id="preview-gambar" class="flex flex-wrap gap-2 justify-center mt-4"></div>
+      </div>
+    </div>
+
+    <button type="submit" class="mt-6 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded font-semibold">Simpan Akun</button>
+  </form>
+</div>
+
+  <div class="overflow-x-auto bg-gray-900 rounded-lg shadow-lg">
+    <table class="min-w-full table-auto text-sm text-left text-white">
+      <thead class="bg-indigo-700 text-white uppercase">
+        <tr>
+          <th class="px-4 py-3">Nama Akun</th>
+          <th class="px-4 py-3">ID Akun</th>
+          <th class="px-4 py-3">Harga</th>
+          <th class="px-4 py-3">Deskripsi</th>
+          <th class="px-4 py-3">Skin</th>
+          <th class="px-4 py-3">Emblem</th>
+          <th class="px-4 py-3">Status</th>
+          <th class="px-4 py-3">Login</th>
+          <th class="px-4 py-3">Minus</th>
+          <th class="px-4 py-3">Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="detail-akun-tbody" class="divide-y divide-gray-700">
+        <!-- Data dari JavaScript akan masuk di sini -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- disini untuk tabel gambar -->
+   <h2 class="text-2xl font-semibold text-white mt-10 mb-4">Gambar Akun</h2>
+
+<div class="overflow-x-auto bg-gray-900 rounded-lg shadow-lg">
+  <table class="min-w-full table-auto border border-gray-300 mt-6">
+  <thead class="bg-gray-800 text-white">
+    <tr>
+      <th class="px-4 py-2 text-left">Nama Akun</th>
+      <th class="px-4 py-2 text-left">Gambar Akun</th>
+    </tr>
+  </thead>
+  <tbody id="gambar-akun-tbody"></tbody>
+</table>
+
+  <div class="mt-4">
+  <button id="simpan-urutan-btn"
+    class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded">
+    Simpan Urutan Gambar
+  </button>
+</div>
+</div>
+</div>
+
+  </main>
+
+  <div id="popup" class="fixed top-4 left-1/2 transform -translate-x-1/2 hidden px-6 py-3 rounded shadow-lg text-white z-50 animate__animated">
+    <span id="popup-message"></span>
+  </div>
+
+<!-- Modal Konfirmasi -->
+<div id="confirm-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="bg-gray-800 text-white p-6 rounded-xl max-w-sm w-full shadow-xl text-center">
+    <h2 class="text-xl font-semibold mb-2">Konfirmasi</h2>
+    <p id="confirm-message" class="mb-4">Apakah Anda yakin?</p>
+    <div class="flex justify-center gap-4">
+      <button id="confirm-cancel" class="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded">Batal</button>
+      <button id="confirm-yes" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded">Ya, Hapus</button>
+    </div>
+  </div>
+</div>
+
+    <!-- Tombol Kembali ke Atas -->
+    <button id="scrollToTopBtn"
+        class="hidden fixed bottom-6 right-6 z-50 w-12 h-12 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-lg transition-opacity duration-300 flex items-center justify-center">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
+
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+        /* Menggunakan font Inter sebagai default */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            /* bg-gray-900 */
+        }
+
+        /* Style untuk scrollbar agar serasi dengan tema gelap */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1f2937;
+            /* bg-gray-800 */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            /* bg-indigo-600 */
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
+            /* bg-indigo-500 */
+        }
+        
+
+        /* Efek gradien pada border */
+        .gradient-border {
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            border-image: linear-gradient(to right, #4f46e5, #ec4899) 1;
+        }
+
+        /* Animasi untuk spinner */
+        .spinner {
+            border-top-color: #4f46e5;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Style untuk modal */
+        #ai-modal-backdrop {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        #ai-modal-content {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Transisi untuk menu dropdown CS */
+        .cs-dropdown-item {
+            opacity: 0;
+            visibility: hidden;
+            /* Sembunyikan item secara default */
+            transform: translateX(-10px);
+            /* Ubah arah animasi */
+            transition: all 0.2s ease-in-out;
+        }
+
+        .group:hover .cs-dropdown-item {
+            opacity: 1;
+            visibility: visible;
+            /* Tampilkan item saat hover */
+            transform: translateX(0);
+        }
+
+        /* Animasi untuk AI typing indicator */
+        .dot-flashing {
+            position: relative;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: #a7a7a7;
+            color: #a7a7a7;
+            animation: dot-flashing 1s infinite linear alternate;
+            animation-delay: .5s;
+        }
+
+        .dot-flashing::before,
+        .dot-flashing::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 0;
+        }
+
+        .dot-flashing::before {
+            left: -10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: #a7a7a7;
+            color: #a7a7a7;
+            animation: dot-flashing 1s infinite alternate;
+            animation-delay: 0s;
+        }
+
+        .dot-flashing::after {
+            left: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: #a7a7a7;
+            color: #a7a7a7;
+            animation: dot-flashing 1s infinite alternate;
+            animation-delay: 1s;
+        }
+
+        @keyframes dot-flashing {
+            0% {
+                background-color: #a7a7a7;
+            }
+
+            50%,
+            100% {
+                background-color: #4f46e5;
+            }
+        }
+
+        /* === PERUBAHAN BARU: Style untuk Animasi Kotak Jatuh === */
+        main {
+            position: relative;
+            /* Wajib untuk positioning anak elemen absolut */
+            overflow: hidden;
+            /* Wajib agar kotak tidak keluar dari area main */
+            z-index: 1;
+        }
+
+        .falling-box {
+            position: absolute;
+            top: -150px;
+            /* Mulai dari atas luar layar */
+            background-color: rgba(79, 70, 229, 0.2);
+            /* Warna dasar dengan transparansi */
+            border-radius: 8px;
+            z-index: -1;
+            /* Tampil di belakang konten */
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: 1;
+            /* Hanya berjalan sekali per elemen */
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(120vh) rotate(360deg);
+                /* Jatuh ke bawah sambil berputar */
+                opacity: 0;
+            }
+        }
+
+        /* === CSS UNTUK SLIDER HERO === */
+
+        /* 1. Viewport: Wadah utama yang terlihat. 
+   - overflow: hidden -> Menyembunyikan slide yang "nembus" atau keluar dari area.
+   - position: relative -> Menjadi acuan untuk posisi track. */
+        .slider-viewport {
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 2. Track: Wadah yang menampung semua slide dan bergerak ke kiri/kanan.
+   - display: flex -> Membuat semua slide berjajar horizontal.
+   - transition -> Memberi animasi halus saat posisi track berubah. */
+        .slider-track {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        /* 3. Slide: Masing-masing item di dalam slider.
+   - flex: 0 0 100% -> Setiap slide memiliki lebar pas 100% dari viewport.
+   - transform: scale(0.9) -> STATE AWAL: semua slide sedikit mengecil.
+   - opacity: 0.7 -> STATE AWAL: semua slide sedikit transparan.
+   - transition -> Memberi animasi halus saat ukuran (scale) dan opacity berubah. */
+        .slide {
+            flex: 0 0 100%;
+            box-sizing: border-box;
+            /* PERUBAHAN: Mengurangi jarak antar slide agar lebih pas di mobile */
+            padding: 0 0.5rem;
+            /* 8px */
+            transform: scale(0.9);
+            opacity: 0.7;
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+        }
+
+        /* 4. State Aktif: Class ini akan ditambahkan oleh js pada slide yang sedang tampil.
+   - transform: scale(1) -> Mengembalikan ukuran slide ke normal.
+   - opacity: 1 -> Mengembalikan opacity ke normal. */
+        .slide.is-active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+@layer utilities {
+      @keyframes slide-down {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slide-up {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+      }
+
+      .animate-slide-down {
+        animation: slide-down 0.3s ease-out forwards;
+      }
+
+      .animate-slide-up {
+        animation: slide-up 0.3s ease-in forwards;
+      }
+    }
+
+    @layer utilities {
+  .shine-effect {
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    transform: skewX(-20deg);
+    animation: shine-slide 2.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes shine-slide {
+    0% {
+      left: -75%;
+      opacity: 0;
+    }
+
+    10% {
+      opacity: 0.6;
+    }
+
+    50% {
+      left: 125%;
+      opacity: 0.6;
+    }
+
+    80% {
+      opacity: 0;
+    }
+
+    100% {
+      left: 125%;
+      opacity: 0;
+    }
+  }
+
+  .filter-btn-active {
+    background-color: #4f46e5 !important;
+    color: white !important;
+  }
+
+  .fade-section {
+    transition: opacity 0.3s ease;
+  }
+
+  .fade-section.hidden {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+  }
+
+  .fade-section.block {
+    opacity: 1;
+    position: relative;
+  }
+}
+
+.click-bounce:active {
+    animation: clickBounce 0.2s ease-out;
+  }
+
+  @keyframes clickBounce {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.90);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
